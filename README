@@ -1,0 +1,5 @@
+else  {
+        // Handle other conditions or show a general alert
+        alert("User Account created successfully!");
+        navigate("/userAccount");
+    }
