@@ -6,51 +6,46 @@ import RegisterPic from '../assets/RegisterPic.svg';
 
 
 function Register() {
-    const[formData,setFormData] = useState({})
-    const[error,setError] = useState(null)
-   // const[loading,setLoading] = useState()
-    const navigate = useNavigate()
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-    //handle the changes
-    const handleChange = (e)=>{
-        setFormData({
-            ...formData,
-            [e.target.id]:e.target.value,  
-          })
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const res = await fetch('http://localhost:3001/server/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await res.json();
+  
+      if (data.success === false) {
+        setError(data.message);
+        return;
+      }
+  
+      setError(null);
+      alert("LogIn to Your  Account!");
+      navigate("/login");
+
+    } catch (error) {
+      setError(error.message);
     }
-
-    //handle the submit
-    const handleSubmit = async(e)=>{
-        e.preventDefault();
-      
-      
-        try{
-            const res = await fetch('/server/auth/Register', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-          
-           const data = await res.json();
-           console.log(data)
-           if(data.success === false){
-            setLoading(false);
-            setError(data.message);
-            return
-           }
-      
-           setError(null)
-           navigate('/signIn')
-        }
-        catch(error){
-          setError(error.message)
-        }
-        
-      };
-
-
+  };
+  
     
   
   return (
@@ -68,6 +63,7 @@ function Register() {
                 onChange={handleChange}
                 name='name'
                 autoComplete='off'
+                id='name'
             />
         </div>
 
@@ -78,6 +74,7 @@ function Register() {
                 type='email'
                 autoComplete='off'
                 name='email'
+                id='email'
                 onChange={handleChange}
                 
             />
@@ -88,7 +85,9 @@ function Register() {
                 placeholder='Enter the Password'
                 className='w-full p-2 border rounded'
                 name='password'
+                id='password'
                 onChange={handleChange}
+                autoComplete='off'
             />
         </div>
     
