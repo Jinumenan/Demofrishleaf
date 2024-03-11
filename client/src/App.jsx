@@ -9,7 +9,9 @@ import MarketingAccout from './page/MarketingAccout'
 import StaffManagerAccount from './page/StaffManagerAccount'
 import StaffAccount from './page/StaffAccount'
 import UserAccount from './page/UserAccount'
+import Contact from './page/Contact'
 import About from './page/About'
+import OwnerPage from './page/OwnerPage'
 
 
 
@@ -22,12 +24,14 @@ function App() {
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='/about' element={<About/>}/>
+    <Route path='/Contact' element={<Contact/>}/>
     <Route path='/supplierAccount' element={<SupplierAccount/>}/>
     <Route path='/shipmentAccount' element={<ShipmentAccount/>}/>
     <Route path='/marketingAccount' element={<MarketingAccout/>}/>
     <Route path='/staffManagerAccount' element={<StaffManagerAccount/>}/>
     <Route path='/staffAccount' element={<StaffAccount/>}/>
     <Route path='/userAccount' element={<UserAccount/>}/>
+    <Route path='/OwnerPage' element={<OwnerPage/>}/>
     </Routes>
     </BrowserRouter>
   )

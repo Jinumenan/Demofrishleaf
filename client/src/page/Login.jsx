@@ -1,126 +1,115 @@
-import React, { useState } from 'react'
-import Navbar from '../component/Navbar'
-import Loginpic from '../assets/loginPic.svg'
-import{Link,useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../component/Navbar';
+import Loginpic from '../assets/loginPic.svg';
+import { Link } from 'react-router-dom';
 
 function Login() {
-
-  const [formDate, setFormData] = useState({});
+  const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  const handleChange = (e)=>{
+
+  const handleChange = (e) => {
     setFormData({
-  ...formDate,
-  [e.target.id]:e.target.value,  
-})
-  }
-
-  
-
-const handleSubmit = async(e)=>{
-  e.preventDefault();
-  try {
-    const res = await fetch('http://localhost:3001/server/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formDate),
+      ...formData,
+      [e.target.id]: e.target.value,
     });
+  };
 
-    const data = await res.json();
-    console.log(data);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    if (data.success === false) {
-      console.error(data.message);
-      return;
-    }
-  
-    const emailPrefix = formDate.email.toLowerCase().slice(0, 5);
+    try {
+      const res = await fetch('http://localhost:3001/server/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    switch (emailPrefix) {
-      case 'suppl':
-        alert('You login Your Supplier Account');
+      const data = await res.json();
+
+      if (data.error) {
+        console.error(data.error);
+        return; // Handle the error appropriately (e.g., display an error message)
+      }
+
+      // Redirect based on the user's role
+      if (data.role === 'user') {
+        navigate('/userAccount');
+      } 
+      else if (data.role === 'supplier') {
         navigate('/supplierAccount');
-        break;
-      case 'staff':
-        alert('You login Your Staff Account');
+      } 
+      else if (data.role === 'staff') {
         navigate('/staffAccount');
-        break;
-
-      case 'stman':
-        alert('You login Your Staff Manger Account');
+      } 
+      else if (data.role === 'StManager') {
         navigate('/staffManagerAccount');
-        break;
-
-      case 'shipm':
-        alert('You login Your Shipment Account');
+      } 
+      else if (data.role === 'Shipment') {
         navigate('/shipmentAccount');
-        break;
-
-      case 'marke':
-        alert('You login Your Marketing Account');
+      }
+      else if (data.role === 'marketingM') {
         navigate('/marketingAccount');
-        break;
-      default:
-        alert('You login Your User Account');
-        navigate('/userAccount'); 
-        break;
+      }
+      else if (data.role === 'Owner') {
+        navigate('/supplierAccount');
+      }
+      else {
+        // Handle unknown role
+        console.error('Unknown role:', data.role);
+      }
+    } catch (error) {
+      console.error(error.message);
+      // Handle the error appropriately (e.g., display an error message)
     }
-  } catch (error) {
-    console.error(error.message);
-  }
-  
-}
+  };
+
   return (
     <div>
-        <Navbar/>
-        <div className='flex w-[1000px] h-[600px] bg-gray-100 m-auto rounded-3xl p-8 my-7'>
-          <div className=' p-5 flex-1'>
-            <form onSubmit={handleSubmit}>
-            <h2 className='text-2xl font-bold mb-10 text-center'>LogIn To  Your Account</h2>
-            <div className='mb-4'>
-                <input
-                    type="email"
-                    placeholder="Enter the e-mail"
-                    className='w-full p-2 border rounded'
-                    onChange={handleChange} 
-                    id='email'
-                 />
-                  
+      <Navbar />
+      <div className="flex w-[1000px] h-[600px] bg-gray-100 m-auto rounded-3xl p-8 my-7">
+        <div className="p-5 flex-1">
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-2xl font-bold mb-10 text-center">LogIn To Your Account</h2>
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Enter the e-mail"
+                className="w-full p-2 border rounded"
+                onChange={handleChange}
+                id="email"
+              />
             </div>
 
-            <div className='mb-4'>
-                <input
-                    type="password"
-                    placeholder="Enter the password"
-                    className='w-full p-2 border rounded'
-                    onChange={handleChange}
-                    id='password'
-                    
-                />
+            <div className="mb-4">
+              <input
+                type="password"
+                placeholder="Enter the password"
+                className="w-full p-2 border rounded"
+                onChange={handleChange}
+                id="password"
+              />
             </div>
-            <div className='flex justify-between'>
-                {/* <div className='flex'>
-                <input className="w-5 h-5" type="checkbox" id="myCheckbox" name="myCheckbox"/>
-                <div className='-mt-1 pl-3'> <label for="myCheckbox">Accept all Terms:</label></div>
-                </div> */}
-
-                <div className='text-green-600 -mt-1'>
-                    Forget Password
-                </div>
+            <div className="flex justify-between">
+              <div className="text-green-600 -mt-1">Forget Password</div>
             </div>
 
-                <button className='bg-green-500 w-full text-white px-4 py-2 rounded mt-6  hover:bg-green-900'>Log in</button>    
-            </form>
-            <h1 className='text-center mt-10'> Not Register Yet? <Link to="/register" className=" text-green-600 hover:opacity-95 cursor-pointer">Register</Link></h1>
-            <h1></h1>
-          </div>
-          <div><img className='w-96 h-96' src={Loginpic} alt="" /></div>
+            <button className="bg-green-500 w-full text-white px-4 py-2 rounded mt-6  hover:bg-green-900">
+              Log in
+            </button>
+          </form>
+          <h1 className="text-center mt-10">
+            {' '}
+            Not Register Yet? <Link to="/register" className=" text-green-600 hover:opacity-95 cursor-pointer">Register</Link>
+          </h1>
+          <h1></h1>
         </div>
-       
+        <div><img className="w-96 h-96" src={Loginpic} alt="" /></div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
