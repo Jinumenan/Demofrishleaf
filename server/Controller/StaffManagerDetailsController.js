@@ -1,15 +1,12 @@
-import Details from "../Models/Details.js";
+import StaffManagerDetails from "../Models/StaffManagerDetails.js";
 
+//Data Create
 export const CreateDetails = async (req, res) => {
-    const { name, email, gender, exprience ,batch} = req.body;
+    const {name,email,gender,exprience,branch} = req.body;
   
     try{
-      const newDetails = new Details({
-        name,
-        email,
-        gender,
-        exprience,
-        batch
+      const newDetails = new StaffManagerDetails({
+        name,email,gender,exprience,branch
       })
       await newDetails.save();
       res.status(201).json({ message: "Details created successfully", data: newDetails });
@@ -25,7 +22,7 @@ export const CreateDetails = async (req, res) => {
 //Read details by ID
 export const getAllDetails = async (req, res) => {
   try {
-      const allDetails = await Details.find();
+      const allDetails = await StaffManagerDetails.find();
       if (!allDetails || allDetails.length === 0) {
           return res.status(404).json({ message: "No details found" });
       }
@@ -42,8 +39,8 @@ export const getAllDetails = async (req, res) => {
 //Read details by ID
 export const getOneDetails = async (req, res) => {
   try {
-      const oneDetails = await Details.findById();
-      if (!oneDetails || oneDetails.length === 0) {
+      const oneDetails = await StaffManagerDetails.findById(req.params.id);
+      if (!oneDetails) {
           return res.status(404).json({ message: "No details found" });
       }
       res.json({ message: "Details found", data: oneDetails });
@@ -58,15 +55,12 @@ export const getOneDetails = async (req, res) => {
 // Update details by ID
 export const updateDetailsById = async (req, res) => {
   const { id } = req.params;
-  const { name, email, gender, exprience, batch } = req.body;
+  const {name,email,gender,exprience,branch} = req.body;
 
   try {
-      const updatedDetails = await Details.findByIdAndUpdate(id, {
-          name,
-          email,
-          gender,
-          exprience,
-          batch
+      const updatedDetails = await StaffManagerDetails.findByIdAndUpdate(id, {
+        name,email,gender,exprience,branch
+
       }, { new: true });
 
       if (!updatedDetails) {
@@ -84,7 +78,7 @@ export const deleteDetailsById = async (req, res) => {
   const { id } = req.params;
 
   try {
-      const deletedDetails = await Details.findByIdAndDelete(id);
+      const deletedDetails = await StaffManagerDetails.findByIdAndDelete(id);
       if (!deletedDetails) {
           return res.status(404).json({ message: "Details not found" });
       }

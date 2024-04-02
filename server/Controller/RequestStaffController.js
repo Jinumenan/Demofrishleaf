@@ -1,15 +1,12 @@
-import Details from "../Models/Details.js";
+import RequestStaff from "../Models/RequestStaff.js";
 
+//Data Create
 export const CreateDetails = async (req, res) => {
-    const { name, email, gender, exprience ,batch} = req.body;
+    const { inputItem} = req.body;
   
     try{
-      const newDetails = new Details({
-        name,
-        email,
-        gender,
-        exprience,
-        batch
+      const newDetails = new RequestStaff({
+        inputItem
       })
       await newDetails.save();
       res.status(201).json({ message: "Details created successfully", data: newDetails });
@@ -25,7 +22,7 @@ export const CreateDetails = async (req, res) => {
 //Read details by ID
 export const getAllDetails = async (req, res) => {
   try {
-      const allDetails = await Details.find();
+      const allDetails = await RequestStaff.find();
       if (!allDetails || allDetails.length === 0) {
           return res.status(404).json({ message: "No details found" });
       }
@@ -42,7 +39,7 @@ export const getAllDetails = async (req, res) => {
 //Read details by ID
 export const getOneDetails = async (req, res) => {
   try {
-      const oneDetails = await Details.findById();
+      const oneDetails = await RequestStaff.findById();
       if (!oneDetails || oneDetails.length === 0) {
           return res.status(404).json({ message: "No details found" });
       }
@@ -58,15 +55,11 @@ export const getOneDetails = async (req, res) => {
 // Update details by ID
 export const updateDetailsById = async (req, res) => {
   const { id } = req.params;
-  const { name, email, gender, exprience, batch } = req.body;
+  const { inputItem } = req.body;
 
   try {
-      const updatedDetails = await Details.findByIdAndUpdate(id, {
-          name,
-          email,
-          gender,
-          exprience,
-          batch
+      const updatedDetails = await RequestStaff.findByIdAndUpdate(id, {
+        inputItem
       }, { new: true });
 
       if (!updatedDetails) {
@@ -84,7 +77,7 @@ export const deleteDetailsById = async (req, res) => {
   const { id } = req.params;
 
   try {
-      const deletedDetails = await Details.findByIdAndDelete(id);
+      const deletedDetails = await RequestStaff.findByIdAndDelete(id);
       if (!deletedDetails) {
           return res.status(404).json({ message: "Details not found" });
       }

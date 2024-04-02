@@ -1,13 +1,14 @@
 import express from "express"   
-import{CreateDetails,getAllDetails,updateDetailsById,deleteDetailsById} from '../Controller/DetailsController.js'
+import{CreateDetails,getAllDetails,updateDetailsById,deleteDetailsById,getOneDetails} from '../Controller/DetailsController.js'
 
 const router = express.Router();
 
 
 router.post('/details', CreateDetails);
 router.get('/detailsget', getAllDetails);
-router.put('/details/:id', updateDetailsById);
-router.delete('/details/:id', deleteDetailsById);
+router.get('/detailsGetOne/:id', getAllDetails);
+router.put('/detailsupdate/:id', updateDetailsById);
+router.delete('/detailsdelete/:id', deleteDetailsById);
 
 export default router;  
 

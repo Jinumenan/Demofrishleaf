@@ -1,10 +1,10 @@
-import Details from "../Models/Details.js";
+import StaffManagerStaffDetailsModel from "../Models/StaffManagerStaffDetailsModel.js";
 
 export const CreateDetails = async (req, res) => {
     const { name, email, gender, exprience ,batch} = req.body;
   
     try{
-      const newDetails = new Details({
+      const newDetails = new StaffManagerStaffDetailsModel({
         name,
         email,
         gender,
@@ -25,7 +25,7 @@ export const CreateDetails = async (req, res) => {
 //Read details by ID
 export const getAllDetails = async (req, res) => {
   try {
-      const allDetails = await Details.find();
+      const allDetails = await StaffManagerStaffDetailsModel.find();
       if (!allDetails || allDetails.length === 0) {
           return res.status(404).json({ message: "No details found" });
       }
@@ -42,7 +42,7 @@ export const getAllDetails = async (req, res) => {
 //Read details by ID
 export const getOneDetails = async (req, res) => {
   try {
-      const oneDetails = await Details.findById();
+      const oneDetails = await StaffManagerStaffDetailsModel.findById();
       if (!oneDetails || oneDetails.length === 0) {
           return res.status(404).json({ message: "No details found" });
       }
@@ -61,7 +61,7 @@ export const updateDetailsById = async (req, res) => {
   const { name, email, gender, exprience, batch } = req.body;
 
   try {
-      const updatedDetails = await Details.findByIdAndUpdate(id, {
+      const updatedDetails = await StaffManagerStaffDetailsModel.findByIdAndUpdate(id, {
           name,
           email,
           gender,
@@ -84,7 +84,7 @@ export const deleteDetailsById = async (req, res) => {
   const { id } = req.params;
 
   try {
-      const deletedDetails = await Details.findByIdAndDelete(id);
+      const deletedDetails = await StaffManagerStaffDetailsModel.findByIdAndDelete(id);
       if (!deletedDetails) {
           return res.status(404).json({ message: "Details not found" });
       }
