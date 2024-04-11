@@ -7,6 +7,9 @@ import RequestSaffRoute from './Routes/RequestSaffRoute.js';
 import StaffManagerRoute from './Routes/StaffManagerRoute.js';
 import StaffManagerPaymentRoute from './Routes/StaffManagerPaymentRoute.js';
 import StaffManagerStaffDetailsRoutes from './Routes/StaffManagerStaffDetailsRoutes.js';
+import userInfor from './Routes/UserInformationRoute.js';
+import userInforPayment from './Routes/UserInforPaymentRoute.js';
+
 import cors from 'cors';
 
 const app = express();
@@ -23,6 +26,9 @@ app.use('/server/staffRequest',RequestSaffRoute)
 app.use('/server/StaffManager',StaffManagerRoute)
 app.use('/server/StaffManagerPaymentRoute',StaffManagerPaymentRoute)
 app.use('/server/StaffInfo',StaffManagerStaffDetailsRoutes)
+app.use('/server/userInfo',userInfor)
+app.use('/server/userInfoPayment',userInforPayment)
+
 
 
 app.listen(3001, () => {

@@ -6,14 +6,23 @@ import RegisterPic from "../assets/RegisterPic.svg";
 
 function Register() {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { id, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value,
+      [id]: value,
     });
+
+    const newErrors = { ...errors };
+    if (value.trim() === "") {
+      newErrors[id] = "This field is required";
+    } else {
+      delete newErrors[id];
+    }
+    setErrors(newErrors);
   };
 
   const handleSubmit = async (e) => {
@@ -31,23 +40,23 @@ function Register() {
       const data = await res.json();
 
       if (data.success === false) {
-        setError(data.message);
+        setErrors(data.message);
         return;
       }
 
-      setError(null);
-      alert("LogIn to Your  Account!");
+      setErrors(null);
+      alert("LogIn to Your Account!");
       navigate("/login");
     } catch (error) {
-      setError(error.message);
+      setErrors(error.message);
     }
   };
 
   return (
     <div>
       <Navbar />
-      <div className="flex w-[1000px] h-[600px] bg-gray-100 m-auto rounded-3xl p-8  my-7">
-        <div className=" p-5 flex-1">
+      <div className="flex w-[1000px] h-[600px] bg-gray-100 m-auto rounded-3xl p-8 my-7">
+        <div className="p-5 flex-1">
           <form onSubmit={handleSubmit}>
             <h2 className="text-2xl font-bold mb-10 text-center ">
               Create Your Account
@@ -62,6 +71,9 @@ function Register() {
                 autoComplete="off"
                 id="name"
               />
+              {errors.name && (
+                <span className="text-red-500">{errors.name}</span>
+              )}
             </div>
 
             <div className="mb-4">
@@ -74,18 +86,21 @@ function Register() {
                 id="email"
                 onChange={handleChange}
               />
+              {errors.email && (
+                <span className="text-red-500">{errors.email}</span>
+              )}
             </div>
 
             {/* Dropdown for selecting the role */}
             <div className="mb-4">
               <select
-                placeholder="Select your role"
                 className="w-full p-2 border rounded"
                 name="role"
                 id="role"
                 onChange={handleChange}
+                value={formData.role} // Add value attribute
               >
-                <option value="" disabled selected>Select your role</option>
+                <option value="" disabled>Select your role</option>
                 <option value="user">User</option>
                 <option value="supplier">Supplier</option>
                 <option value="Staff">Staff</option>
@@ -94,6 +109,9 @@ function Register() {
                 <option value="marketingM">marketingM</option>
                 <option value="Owner">Owner</option>
               </select>
+              {errors.role && (
+                <span className="text-red-500">{errors.role}</span>
+              )}
             </div>
 
             <div className="mb-4">
@@ -106,6 +124,9 @@ function Register() {
                 onChange={handleChange}
                 autoComplete="off"
               />
+              {errors.password && (
+                <span className="text-red-500">{errors.password}</span>
+              )}
             </div>
 
             <div className="flex justify-between">
@@ -117,27 +138,24 @@ function Register() {
                   name="myCheckbox"
                 />
                 <div className="-mt-1 pl-3">
-                  {" "}
-                  <label for="myCheckbox">Accept all Terms:</label>
+                  <label htmlFor="myCheckbox">Accept all Terms:</label>
                 </div>
               </div>
             </div>
 
-            <button className="bg-green-500 w-full text-white px-4 py-2 rounded mt-6  hover:bg-green-900">
+            <button className="bg-green-500 w-full text-white px-4 py-2 rounded mt-6 hover:bg-green-900">
               Register Now
             </button>
           </form>
           <h1 className="text-center mt-10">
-            {" "}
-            Have An Account ?{" "}
+            Have An Account?{" "}
             <Link
               to="/login"
-              className=" text-green-600 hover:opacity-95 cursor-pointer"
+              className="text-green-600 hover:opacity-95 cursor-pointer"
             >
               LogIn
             </Link>
           </h1>
-          <h1></h1>
         </div>
         <div>
           <img className="w-96 h-96" src={RegisterPic} alt="" />

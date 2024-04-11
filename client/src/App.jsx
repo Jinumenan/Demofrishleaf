@@ -4,9 +4,12 @@ import { BrowserRouter,Routes,Route } from "react-router-dom"
 import Register from './page/Register'
 import Login from './page/Login'
 import SupplierAccount from './page/SupplierAccount'
+
+
 import ShipmentAccount from './page/ShipmentAccount'
 import MarketingAccout from './page/MarketingAccout'
 
+// all the staffManager link
 import StaffManagerAccount from './page/StaffManagerAccount'
 import StaffManagerDteailsUpdate from './page/SubStaffManager/StaffManagerDteailsUpdate.jsx'
 import PaymentInforStaffMan from './page/SubStaffManager/PaymentforStaffMan'
@@ -23,9 +26,21 @@ import Request from './page/SubStaffPage/Request'
 import StaffUpdate from'./page/SubStaffPage/StaffUpdate.jsx'
 
 import UserAccount from './page/UserAccount'
+import UserAccountUpdate from './page/SubUserInformation/UserInformationUpdate.jsx'
+import UserPayment from './page/SubUserInformation/UserPayment.jsx'
+import UserPaymentUpdate from './page/SubUserInformation/UserPaymentUpdate.jsx'
+import UserFeedBack from './page/SubUserInformation/userFeedBack.jsx'
+import UserProduct from './page/SubUserInformation/UserProduct.jsx'
+
+
+
 import Contact from './page/Contact'
 import About from './page/About'
 import OwnerPage from './page/OwnerPage'
+
+
+
+
 
 
 
@@ -59,6 +74,14 @@ function App() {
     <Route path='/staffupdate/:id' element={<StaffUpdate/>}/>
 
     <Route path='/userAccount' element={<UserAccount/>}/>
+    <Route path='/userAccountUpdate/:id' element={<UserAccountUpdate/>}/>
+    <Route path='/userPayment' element={<UserPayment/>}/>
+    <Route path='/userPaymentUpdate/:id' element={<UserPaymentUpdate/>}/>
+    <Route path='/UserProduct' element={<UserProduct/>}/>
+    <Route path='/userFeedback' element={<UserFeedBack/>}/>
+
+
+
     <Route path='/OwnerPage' element={<OwnerPage/>}/>
     </Routes>
     </BrowserRouter>

@@ -13,6 +13,14 @@ function Login() {
       ...formData,
       [e.target.id]: e.target.value,
     });
+    
+    const newErrors = { ...errors };
+    if (value.trim() === "") {
+      newErrors[id] = "This field is required";
+    } else {
+      delete newErrors[id];
+    }
+    setErrors(newErrors);
   };
 
   const handleSubmit = async (e) => {
@@ -41,7 +49,7 @@ function Login() {
       else if (data.role === 'supplier') {
         navigate('/supplierAccount');
       } 
-      else if (data.role === 'staff') {
+      else if (data.role === 'Staff') {
         navigate('/staffAccount');
       } 
       else if (data.role === 'StManager') {
@@ -80,7 +88,11 @@ function Login() {
                 className="w-full p-2 border rounded"
                 onChange={handleChange}
                 id="email"
+                name='email'
               />
+               {errors.email && (
+                <span className="text-red-500">{errors.email}</span>
+              )}
             </div>
 
             <div className="mb-4">
@@ -90,7 +102,11 @@ function Login() {
                 className="w-full p-2 border rounded"
                 onChange={handleChange}
                 id="password"
+                name="password"
               />
+               {errors.password && (
+                <span className="text-red-500">{errors.password}</span>
+              )}
             </div>
             <div className="flex justify-between">
               <div className="text-green-600 -mt-1">Forget Password</div>

@@ -39,10 +39,6 @@ function StaffAccount() {
   }
 
 
-  // useEffect(() => {
-  //   console.log("UserProfile: ", UserProfile);
-  // }, [UserProfile])
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,8 +58,8 @@ function StaffAccount() {
         const data = response.data;
         console.log(data);
         alert("User Details created successfully!");
-        navigate("");
-        alert("YOU");
+        navigate("/PaymentInforStaff");
+      
       } else {
         throw new Error(response.data || "Failed to create UserDetails");
       }
@@ -107,6 +103,7 @@ function StaffAccount() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Username"
+                required
               />
 
               <input
@@ -116,6 +113,7 @@ function StaffAccount() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email-address"
+                required
               />
 
               <input
@@ -125,6 +123,7 @@ function StaffAccount() {
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 placeholder="Gender"
+                required
               />
 
               <input
@@ -134,6 +133,7 @@ function StaffAccount() {
                 value={exprience}
                 onChange={(e) => setExprience(e.target.value)}
                 placeholder="Expreience"
+                required
               />
 
               <input
@@ -143,6 +143,7 @@ function StaffAccount() {
                 value={batch}
                 onChange={(e) => setBatch(e.target.value)}
                 placeholder="Batch"
+                required
               />
 
               <button className="w-[190px] h-[40px] bg-green-900 text-white rounded-xl text-center  mt-6">

@@ -105,7 +105,7 @@ function PaymentforStaffMan() {
               placeholder="Cash holder"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              va
+              required
               />
 
               <input
@@ -114,6 +114,7 @@ function PaymentforStaffMan() {
               placeholder="Name of Bank"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
               />
 
 
@@ -123,6 +124,7 @@ function PaymentforStaffMan() {
               placeholder="Card Number"
               value={cnumber}
               onChange={(e) => setCnumber(e.target.value)}
+              required
               />
 
 
@@ -132,6 +134,7 @@ function PaymentforStaffMan() {
               placeholder="Date and year"
               value={dateyear}
               onChange={(e) => setDateyear(e.target.value)}
+              required
               />
 
 
@@ -141,6 +144,7 @@ function PaymentforStaffMan() {
               placeholder="Cvc"
               value={cvc}
               onChange={(e) => setCvc(e.target.value)}
+              required
               />
 
               <input
@@ -149,6 +153,7 @@ function PaymentforStaffMan() {
               placeholder="Branch"
               value={branch}
               onChange={(e) => setBranch(e.target.value)}
+              required
               />
 
 
