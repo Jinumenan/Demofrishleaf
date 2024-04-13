@@ -32,11 +32,20 @@ import UserPaymentUpdate from './page/SubUserInformation/UserPaymentUpdate.jsx'
 import UserFeedBack from './page/SubUserInformation/userFeedBack.jsx'
 import UserProduct from './page/SubUserInformation/UserProduct.jsx'
 
+import OwnerPage from './page/OwnerPage'
 
+import InventryAddtoform from './page/SubInventoryPages/InventryAddtoform.jsx'
+import InventryProfile from './page/SubInventoryPages/InventryProfile.jsx'
+import InventryAnalytics from './page/SubInventoryPages/InventryAnalytics.jsx'
+import InventryCalculation from './page/SubInventoryPages/InventryCalculation.jsx'
+import InventryCreateForm from './page/SubInventoryPages/InventrySup/InventryCreateForm.jsx'
+import InventryCreateProfile from './page/SubInventoryPages/InventrySup/InventryCreateProfile.jsx'
+import InventryUpdateform from './page/SubInventoryPages/InventrySup/InventryUpdateform.jsx'
 
+import ProductShow from './page/ProductShowPage.jsx'
 import Contact from './page/Contact'
 import About from './page/About'
-import OwnerPage from './page/OwnerPage'
+
 
 
 
@@ -83,6 +92,18 @@ function App() {
 
 
     <Route path='/OwnerPage' element={<OwnerPage/>}/>
+
+    <Route path='/inventroyAddtoForms' element={<InventryAddtoform/>}/>
+    <Route path='/inventryProfile' element={<InventryProfile/>}/>
+    <Route path='/inventryAnalytics' element={<InventryAnalytics/>}/>
+    <Route path='/inventryCalculation' element={<InventryCalculation/>}/>
+    <Route path='/inventryCreateForm' element={<InventryCreateForm/>}/>
+    <Route path='/inventryCreateProfile/:id' element={<InventryCreateProfile/>}/>
+    <Route path='/inventryUpdateform/:id' element={<InventryUpdateform/>}/>
+
+    <Route path='/mainProducts' element={<ProductShow/>}/>
+
+
     </Routes>
     </BrowserRouter>
   )
