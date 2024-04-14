@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { RxUpdate } from "react-icons/rx";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import Navbar from "../component/Navbar";
+import Navbar from "../../component/Navbar";
 import { Link } from "react-router-dom";
-import userPic from "../assets/userSh.png";
+import userPic from "../../assets/userSh.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function StaffAccount() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
-  const [exprience, setExprience] = useState("");
-  const [batch, setBatch] = useState("");
-  const [UserProfile, setUserProfile] = useState([]);
-  const [submitted, setSubmitted] = useState(false); // Track form submission
-  const navigate = useNavigate();
 
+function MarktingProfilPage() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [gender, setGender] = useState("");
+    const [exprience, setExprience] = useState("");
+    const [batch, setBatch] = useState("");
+    const [UserProfile, setUserProfile] = useState([]);
+    const navigate = useNavigate();
+  
+    
   useEffect(() => {
     axios
-      .get("http://localhost:3001/server/details/detailsget")
+      .get("http://localhost:3001/server/MarketingProfile/MarketingProfileGetAll")
       .then((result) => {
         console.log("data: ", typeof result.data.data); // Check the fetched data
         console.log("data: ", Object.values(result.data.data)); // Check the fetched data
@@ -32,7 +33,7 @@ function StaffAccount() {
 
   const handleDelete = (id)=>
   {
-    axios.delete(`http://localhost:3001/server/details/detailsdelete/${id}`)
+    axios.delete(`http://localhost:3001/server/MarketingProfile/MarketingProfileDelete/${id}`)
     .then(res=>{console.log(res)
         window.location.reload()
     } )
@@ -45,7 +46,7 @@ function StaffAccount() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/server/details/details",
+        "http://localhost:3001/server/MarketingProfile/MarketingProfileCreate",
         {
           name,
           email,
@@ -60,8 +61,6 @@ function StaffAccount() {
         console.log(data);
         alert("User Details created successfully!");
         navigate("/PaymentInforStaff");
-        setSubmitted(true); // Set submitted to true after successful form submission
-
       
       } else {
         throw new Error(response.data || "Failed to create UserDetails");
@@ -73,21 +72,23 @@ function StaffAccount() {
 
   return (
     <div>
+         <div>
       <Navbar />
       <div className="flex">
-        <div className="flex w-[300px] h-[1200px] bg-lime-900">
-          <div className="p-5">
-            <button className="w-[230px] h-[40px] bg-gray-500 text-white rounded-2xl text-center my-3">
-              <Link to="/staffAccount">Details</Link>
-            </button>
-            <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
-              <Link to="/PaymentInforStaff">Payment Infor</Link>
-            </button>
-            <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
-              <Link to="/request">Request</Link>
-            </button>
+      <div className="flex w-[300px] h-[1200px] bg-lime-900">
+            <div className="p-5">
+              <button className="w-[230px] h-[40px] bg-gray-500 text-white rounded-2xl text-center my-3">
+                <Link to="/MarketingProfile">Profile</Link>
+              </button>
+              <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
+                <Link to="/MarketingPage">Activity</Link>
+              </button>
+              <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
+                <Link to="/paymentAddMarketing">Payment</Link>
+              </button>
+            </div>
           </div>
-        </div>
+
         <div>
           <h1 className="text-3xl text-center">Staff Account</h1>
           <div className="w-[150px] h-[150px]  rounded-full ml-[500px] mt-5 bg-gray-300 pt-3 -mb-[150px]">
@@ -175,7 +176,7 @@ function StaffAccount() {
                       <td>{profile.exprience}</td>
                       <td>{profile.batch}</td>
                       <td className="border p-2 flex items-center  justify-around">
-                        <Link to={`/staffupdate/${profile._id}`} className="px-2 py-1 bg-yellow-700 rounded-sm text-white mx-2 "><RxUpdate/></Link>
+                        <Link to={`/MarketingUpdateProfile/${profile._id}`} className="px-2 py-1 bg-yellow-700 rounded-sm text-white mx-2 "><RxUpdate/></Link>
                         <button className="px-2 py-1 bg-red-700 rounded-sm text-white mx-2" onClick={(e)=>handleDelete(profile._id)}><RiDeleteBin6Line/></button>
                       </td>
                     </tr>
@@ -187,7 +188,8 @@ function StaffAccount() {
         </div>
       </div>
     </div>
-  );
+    </div>
+  )
 }
 
-export default StaffAccount;
+export default MarktingProfilPage

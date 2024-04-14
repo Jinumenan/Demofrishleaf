@@ -7,7 +7,15 @@ import SupplierAccount from './page/SupplierAccount'
 
 
 import ShipmentAccount from './page/ShipmentAccount'
+
 import MarketingAccout from './page/MarketingAccout'
+import MarketingUpdateActivity from './page/SubMarketingPage/AddMarketingUpdate.jsx'
+import MarketingAddActivity from './page/SubMarketingPage/AddMarketing.jsx'
+import MarketingProfile from './page/SubMarketingPage/MarktingProfilPage.jsx'
+import MarketingProfileUpdate from './page/SubMarketingPage/MarketingUpdateProfile.jsx'
+import PaymentAddMarketing from './page/SubMarketingPage/PaymentAddMarketing.jsx'
+import PaymentUpdateMarketing from './page/SubMarketingPage/PaymentUpdateMarketing.jsx'
+
 
 // all the staffManager link
 import StaffManagerAccount from './page/StaffManagerAccount'
@@ -24,6 +32,7 @@ import PaymentInforStaff from './page/SubStaffPage/PaymentInforStaff'
 import PaymentInforStaffUpdate from './page/SubStaffPage/PaymentUpdateStaff.jsx'
 import Request from './page/SubStaffPage/Request'
 import StaffUpdate from'./page/SubStaffPage/StaffUpdate.jsx'
+import StaffProfileShowInfor from'./page/SubStaffPage/ShowDataStaffInforProfil.jsx'
 
 import UserAccount from './page/UserAccount'
 import UserAccountUpdate from './page/SubUserInformation/UserInformationUpdate.jsx'
@@ -31,6 +40,9 @@ import UserPayment from './page/SubUserInformation/UserPayment.jsx'
 import UserPaymentUpdate from './page/SubUserInformation/UserPaymentUpdate.jsx'
 import UserFeedBack from './page/SubUserInformation/userFeedBack.jsx'
 import UserProduct from './page/SubUserInformation/UserProduct.jsx'
+import UserPromotion from './page/SubUserInformation/UserPromotion.jsx'
+import UserFeedBackAdd from './page/SubUserInformation/UserFeedBackAddPage.jsx'
+import UserFeedBackUpdate from './page/SubUserInformation/UserFeedBackUpdatePage.jsx'
 
 import OwnerPage from './page/OwnerPage'
 
@@ -41,6 +53,8 @@ import InventryCalculation from './page/SubInventoryPages/InventryCalculation.js
 import InventryCreateForm from './page/SubInventoryPages/InventrySup/InventryCreateForm.jsx'
 import InventryCreateProfile from './page/SubInventoryPages/InventrySup/InventryCreateProfile.jsx'
 import InventryUpdateform from './page/SubInventoryPages/InventrySup/InventryUpdateform.jsx'
+
+
 
 import ProductShow from './page/ProductShowPage.jsx'
 import Contact from './page/Contact'
@@ -67,6 +81,8 @@ function App() {
     <Route path='/shipmentAccount' element={<ShipmentAccount/>}/>
     <Route path='/marketingAccount' element={<MarketingAccout/>}/>
 
+
+
     <Route path='/staffManagerAccount' element={<StaffManagerAccount/>}/>
     <Route path='/StaffManagerDteailsUpdate/:id' element={<StaffManagerDteailsUpdate/>}/>
     <Route path='/PaymentInforStaffMan' element={<PaymentInforStaffMan/>}/>
@@ -76,18 +92,27 @@ function App() {
     <Route path='/AllStaffUpdatePage/:id' element={<AllStaffUpdatePage/>}/>
     <Route path='/Responce' element={<Responce/>}/>
 
+
+
     <Route path='/staffAccount' element={<StaffAccount/>}/>
     <Route path='/PaymentInforStaff' element={<PaymentInforStaff/>}/>
     <Route path='/staffpaymentupdate/:id' element={<PaymentInforStaffUpdate/>}/>
     <Route path='/request' element={<Request/>}/>
     <Route path='/staffupdate/:id' element={<StaffUpdate/>}/>
+    <Route path='/StaffProfileShowInfor/' element={<StaffProfileShowInfor/>}/>
+
+
 
     <Route path='/userAccount' element={<UserAccount/>}/>
     <Route path='/userAccountUpdate/:id' element={<UserAccountUpdate/>}/>
     <Route path='/userPayment' element={<UserPayment/>}/>
     <Route path='/userPaymentUpdate/:id' element={<UserPaymentUpdate/>}/>
     <Route path='/UserProduct' element={<UserProduct/>}/>
-    <Route path='/userFeedback' element={<UserFeedBack/>}/>
+    <Route path='/UserFeedBack' element={<UserFeedBack/>}/>
+    <Route path='/UserFeedBackAdd' element={<UserFeedBackAdd/>}/>
+    <Route path='/UserFeedBackUpdate/:id' element={<UserFeedBackUpdate/>}/>
+
+    <Route path='/UserPromotion' element={<UserPromotion/>}/>
 
 
 
@@ -102,6 +127,14 @@ function App() {
     <Route path='/inventryUpdateform/:id' element={<InventryUpdateform/>}/>
 
     <Route path='/mainProducts' element={<ProductShow/>}/>
+ 
+    <Route path='/MarketingPage' element={<MarketingAccout/>}/>
+    <Route path='/MarketingAddActivity' element={<MarketingAddActivity/>}/>
+    <Route path='/MarketingUpdateActivity/:id' element={<MarketingUpdateActivity/>}/>
+    <Route path='/MarketingProfile' element={<MarketingProfile/>}/>
+    <Route path='/MarketingUpdateProfile/:id' element={<MarketingProfileUpdate/>}/>
+    <Route path='/paymentAddMarketing' element={<PaymentAddMarketing/>}/>
+    <Route path='/PaymentUpdateMarketing/:id' element={<PaymentUpdateMarketing/>}/>
 
 
     </Routes>

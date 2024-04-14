@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../component/Navbar'
+import { Link } from 'react-router-dom';
 import Footer from '../component/Footer'
 import backgroundImage from '../assets/heroIMG.jpg'
 import blackTea from '../assets/blackTea.jpg'
@@ -54,11 +55,11 @@ export default function () {
                  {/* counting rise part */}
                  <div>
                     <ScrollTigger onEnter={()=>setCounterOn(true)} onExit={()=>setCounterOn(false)} >
-                        <h1 className='text-blac -mt-5 text-4xl ml-40  flex'>
-                            <div className='ml-[12px]'>  {counterOn && <CounterUp start={0} end={99} duration={2} delay={0}/>}+</div>
-                            <div className='ml-[270px]'>  {counterOn && <CounterUp start={0} end={80} duration={2} delay={0}/>}+</div>
-                            <div className='ml-[260px]'>  {counterOn && <CounterUp start={0} end={79} duration={2} delay={0}/>}+</div>
-                            <div className='ml-[260px]'>  {counterOn && <CounterUp start={0} end={94} duration={2} delay={0}/>}+</div>
+                        <h1 className='text-blac -mt-14 text-4xl ml-40  flex'>
+                            <div className='ml-[150px]'>  {counterOn && <CounterUp start={0} end={99} duration={2} delay={0}/>}+</div>
+                            <div className='ml-[221px]'>  {counterOn && <CounterUp start={0} end={80} duration={2} delay={0}/>}+</div>
+                            <div className='ml-[215px]'>  {counterOn && <CounterUp start={0} end={79} duration={2} delay={0}/>}+</div>
+                            <div className='ml-[210px]'>  {counterOn && <CounterUp start={0} end={94} duration={2} delay={0}/>}+</div>
                 
                         </h1>
                     </ScrollTigger>
@@ -120,7 +121,7 @@ export default function () {
                 
             </div>
 
-            <h3 className='bg-green-900 text-white rounded-2xl w-56 text-center py-1 px-4 cursor-pointer  mt-5 mb-5 m-auto hover:opacity-95' >Products We Have</h3>
+            <Link to={"/mainProducts"} className='bg-green-900 text-white rounded-2xl w-56 ml-[638px] py-1 px-4 cursor-pointer  mt-5 mb-5 m-auto hover:opacity-95' >Products We Have</Link>
         </div>
 
  
@@ -128,7 +129,7 @@ export default function () {
         <div className="w-[1519px] h-[500px] mt-10 py-5 bg">
             <h1 className='text-center text-black text-6xl mb-8'>Categories of tea</h1>
             
-            <div className=' flex gap-20 px-5 pl-28'>
+            <div className=' flex gap-20 px-5 pl-28  ml-[150px]'>
             <div> 
                 <img className='w-44 h-44 rounded-full bg-cover ' src={blackTea} alt="black tea" /> 
                  <h3 className='text-black text-2xl text-center mt-5'>Black Tea</h3>
@@ -163,7 +164,7 @@ export default function () {
         <h1 className='text-6xl text-center my-3'>Blog</h1>
         <div>
             
-            <div className=' bg-gray-100 m-10 rounded-lg h-[450px] p-2'>
+            <div className=' bg-gray-100 m-10 rounded-lg h-[350px] p-2'>
                 <img src={blogPic} alt="" className='w-32 h-32 rounded-full m-auto'/>
                 <h1 className='text-center py-5'>The Tea Leaves Sales Management System is fantastic! It's simplified our sales process, making it smoother and more efficient. <br/>
                     I love how easy it is to track inventory and analyze sales data. <br/>
@@ -177,7 +178,7 @@ export default function () {
         </div>
 
         {/* gallery page */}
-        <div>
+        <div className='my-5'>
         <h1 className='text-6xl text-center my-3'>Gallery</h1>
         <div className=' bg-gray-100 m-10 my-10 rounded-lg h-[450px] w-[1250px] p-2 flex justify-around m-auto px-10 py-2'>
         
@@ -187,11 +188,11 @@ export default function () {
         <div><img src={g4} alt=""  className='w-full h-full' /></div>
         
         </div>
-        <button className='bg-green-600 hover:bg-green-950 text-white px-6 py-1  -mt-5 rounded-lg ml-[590px] my-5'>Here you can visit our Gallery</button>
+        <Link className='bg-green-600  hover:bg-green-950 text-white px-6 py-1 text-lg   rounded-lg ml-[630px]  my-5'>Here you can visit our Gallery</Link>
         </div>
 
         
-        <Footer/>
+        <Footer  />
   </div>
   );
 }

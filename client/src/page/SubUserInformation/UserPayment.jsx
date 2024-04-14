@@ -83,13 +83,13 @@ const handleSubmit = async (e) => {
     <div>
     <Navbar/>
     <div className='flex'>
-      <div className='flex w-[300px] h-[1200px] bg-lime-900'>
+    <div className='flex w-[300px] h-[1200px] bg-lime-900'>
         <div className='p-5'>
-          <button className='w-[230px] h-[40px] bg-gray-500 text-white rounded-2xl text-center my-3'><Link to="/">User Infor</Link></button>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="">Payment Infor</Link></button>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="">Delivery Info</Link></button>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/">FeedBack</Link></button>
-
+          <button className='w-[230px] h-[40px] bg-gray-500 text-white rounded-2xl text-center my-3'><Link to="/userAccount">User Infor</Link></button>
+          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/userPayment">Payment Infor</Link></button>
+          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/UserProduct">Delivery Info</Link></button>
+          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/userFeedback">FeedBack</Link></button>
+          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/userFeedback">Promotion</Link></button>
         </div>
       </div>
       <div>

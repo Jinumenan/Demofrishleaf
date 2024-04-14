@@ -7,8 +7,7 @@ import userPic from '../../assets/userSh.png'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
-function PaymentInforStaff() {
+function PaymentAddMarketing() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cnumber, setCnumber] = useState("");
@@ -19,12 +18,11 @@ function PaymentInforStaff() {
   const navigate = useNavigate();
 
 
-
-
+  
 //read on page method
-  useEffect(() => {
+useEffect(() => {
     axios
-      .get("http://localhost:3001/server/staffpayment/staffpaymentgetall")
+      .get("http://localhost:3001/server/MarketingPayment/Marketingpaymentgetall")
       .then((result) => {
         console.log("data: ", typeof result.data.data); // Check the fetched data
         console.log("data: ", Object.values(result.data.data)); // Check the fetched data
@@ -39,7 +37,7 @@ function PaymentInforStaff() {
   //delete method
   const handleDelete = (id)=>
   {
-    axios.delete(`http://localhost:3001/server/staffpayment/staffpaymentdelete/${id}`)
+    axios.delete(`http://localhost:3001/server/MarketingPayment/Marketingpaymentdelete/${id}`)
     .then(res=>{console.log(res)
         window.location.reload()
     } )
@@ -53,7 +51,7 @@ function PaymentInforStaff() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/server/staffpayment/staffoayment",
+        "http://localhost:3001/server/MarketingPayment/Marketingpaymentcreate",
         {
           name,
           email,
@@ -78,22 +76,25 @@ function PaymentInforStaff() {
     }
   };  
 
-           
-
   return (
     <div>
     <Navbar/>
   
     <div className='flex'>
-      <div className='flex w-[300px] h-[1200px] bg-lime-900'>
-        <div className='p-5'>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/StaffProfileShowInfor">Details</Link></button>
-          <button className='w-[230px] h-[40px]  bg-gray-500 text-white rounded-2xl text-center my-3'><Link to="/PaymentInforStaff">Payment Infor</Link></button>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/request">Request</Link></button>
+    <div className="flex w-[300px] h-[1200px] bg-lime-900">
+            <div className="p-5">
+              <button className="w-[230px] h-[40px] bg-gray-500 text-white rounded-2xl text-center my-3">
+                <Link to="/MarketingProfile">Profile</Link>
+              </button>
+              <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
+                <Link to="/MarketingPage">Activity</Link>
+              </button>
+              <button className="w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3">
+                <Link to="/paymentAddMarketing">Payment</Link>
+              </button>
+            </div>
+          </div>
 
-
-        </div>
-      </div>
       <div>
         <h1 className='text-center text-3xl'>Payment</h1>
         <div className='w-[150px] h-[150px]  rounded-full ml-[500px] mt-5 bg-gray-300 pt-3 -mb-[150px]'>
@@ -116,7 +117,7 @@ function PaymentInforStaff() {
               <input
               className='w-[600px] h-[50px] ml-3 rounded-3xl px-5 py-2 my-4' 
               type="text" 
-              placeholder="Name of Bank"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -204,4 +205,4 @@ function PaymentInforStaff() {
   )
 }
 
-export default PaymentInforStaff
+export default PaymentAddMarketing

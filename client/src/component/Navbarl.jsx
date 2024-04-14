@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../assets/Logo.png';
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+function Navbarl() {
   return (
     <div className='flex justify-between mt-4 px-14 '>
       <div>
@@ -26,9 +26,11 @@ export default function Navbar() {
       </div>
       <div>
         <h1>
-          <Link to={"/login"} className="bg-[#417702] text-white px-2 py-1 rounded-sm hover:opacity-95 cursor-pointer">LogIn</Link>
+          <Link to={"/"} className="bg-[#417702] text-white px-2 py-1 rounded-sm hover:opacity-95 cursor-pointer">LogOut</Link>
         </h1>
       </div>
     </div>
-  );
+  )
 }
+
+export default Navbarl

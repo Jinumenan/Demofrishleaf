@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({}); // Define errors state
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { id, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value,
+      [id]: value,
     });
     
     const newErrors = { ...errors };
@@ -59,10 +61,10 @@ function Login() {
         navigate('/shipmentAccount');
       }
       else if (data.role === 'marketingM') {
-        navigate('/marketingAccount');
+        navigate('/MarketingPage');
       }
       else if (data.role === 'Owner') {
-        navigate('/supplierAccount');
+        navigate('/OwnerPage');
       }
       else {
         // Handle unknown role

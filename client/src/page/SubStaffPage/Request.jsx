@@ -65,7 +65,7 @@ function Request() {
     <div className='flex'>
       <div className='flex w-[300px] h-[1200px] bg-lime-900'>
         <div className='p-5'>
-          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/staffAccount">Details</Link></button>
+          <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/StaffProfileShowInfor">Details</Link></button>
           <button className='w-[230px] h-[40px] bg-gray-200 rounded-2xl text-center my-3'><Link to="/PaymentInforStaff">Payment Infor</Link></button>
           <button className='w-[230px] h-[40px] bg-gray-500 text-white  rounded-2xl text-center my-3'><Link to="/request">Request</Link></button>
 
