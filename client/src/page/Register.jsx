@@ -107,6 +107,7 @@ function Register() {
                 <option value="StManager">Staff Manager</option>
                 <option value="Shipment">Shipment</option>
                 <option value="marketingM">marketingM</option>
+                <option value="Inventory">Inventory</option>
                 <option value="Owner">Owner</option>
               </select>
               {errors.role && (

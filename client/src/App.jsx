@@ -44,17 +44,7 @@ import UserPromotion from './page/SubUserInformation/UserPromotion.jsx'
 import UserFeedBackAdd from './page/SubUserInformation/UserFeedBackAddPage.jsx'
 import UserFeedBackUpdate from './page/SubUserInformation/UserFeedBackUpdatePage.jsx'
 
-import OwnerPage from './page/OwnerPage'
-
-import InventryAddtoform from './page/SubInventoryPages/InventryAddtoform.jsx'
-import InventryProfile from './page/SubInventoryPages/InventryProfile.jsx'
-import InventryAnalytics from './page/SubInventoryPages/InventryAnalytics.jsx'
-import InventryCalculation from './page/SubInventoryPages/InventryCalculation.jsx'
-import InventryCreateForm from './page/SubInventoryPages/InventrySup/InventryCreateForm.jsx'
-import InventryCreateProfile from './page/SubInventoryPages/InventrySup/InventryCreateProfile.jsx'
-import InventryUpdateform from './page/SubInventoryPages/InventrySup/InventryUpdateform.jsx'
-
-
+// inventory part
 
 import ProductShow from './page/ProductShowPage.jsx'
 import Contact from './page/Contact'
@@ -115,18 +105,11 @@ function App() {
     <Route path='/UserPromotion' element={<UserPromotion/>}/>
 
 
+    {/* inventory part */}
 
-    <Route path='/OwnerPage' element={<OwnerPage/>}/>
 
-    <Route path='/inventroyAddtoForms' element={<InventryAddtoform/>}/>
-    <Route path='/inventryProfile' element={<InventryProfile/>}/>
-    <Route path='/inventryAnalytics' element={<InventryAnalytics/>}/>
-    <Route path='/inventryCalculation' element={<InventryCalculation/>}/>
-    <Route path='/inventryCreateForm' element={<InventryCreateForm/>}/>
-    <Route path='/inventryCreateProfile/:id' element={<InventryCreateProfile/>}/>
-    <Route path='/inventryUpdateform/:id' element={<InventryUpdateform/>}/>
 
-    <Route path='/mainProducts' element={<ProductShow/>}/>
+    <Route path='/mainProducts' element={<ProductShow/>}/> 
  
     <Route path='/MarketingPage' element={<MarketingAccout/>}/>
     <Route path='/MarketingAddActivity' element={<MarketingAddActivity/>}/>

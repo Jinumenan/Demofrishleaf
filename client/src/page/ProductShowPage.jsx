@@ -20,7 +20,7 @@ function ProductShowPage() {
         .catch((err) => console.error(err)); // Log any errors
     }, []);
   return (
-    <div>
+    <div className='font-serif'>
     <Navbar/>
     <h1 className='text-center  my-8 text-5xl'>Product List</h1>
     <div className='flex flex-wrap gap-3 my-9 ml-24 mt-6 w-[1350px]'>

@@ -14,7 +14,7 @@ export default function Footer() {
     const socialStyle = "m-3 rounded-full cursor-pointer p-2 text-white ";
 
     return <div className='flex items-center justify-around p-2 mobile:flex-col
-    mobile:items-start '
+    mobile:items-start font-serif'
     style={{ backgroundImage: `url(${footer})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
        {/* above 1st*/}
         <div className='flex-1 flex flex-col flex-wrap p-2 text-white'>{/*after this div*/} 

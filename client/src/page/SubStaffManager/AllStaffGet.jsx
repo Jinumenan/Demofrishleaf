@@ -14,7 +14,9 @@ function AllStaffGet() {
 
   const [UserProfile, setUserProfile] = useState([]);
   const navigate = useNavigate();
-  
+
+  const [searchTerm, setSearchTerm] = useState("")
+
   useEffect(() => {
     axios
       .get("http://localhost:3001/server/StaffInfo/detailsStaffInfogetAll")
@@ -39,13 +41,34 @@ function AllStaffGet() {
     .catch(err=>console.log(err))
   }
 
-
+  //Search part
+      const filtredAllStaffGet = UserProfile.filter((Staffdetails) =>
+      Staffdetails.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
+      
            
 
 
   return (
     <div>
     <Navbar/>
+
+    {/* search */}
+    <div className="w-[300px] ml-[50px]">
+          <label>
+            <span class="sr-only">Search</span>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <svg class=" fill-slate-300" viewBox="0 0 20 20"></svg>
+            </span>
+            <input
+              class="search"
+              placeholder="Search for anything..."
+              type="text"
+              name="search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}            />
+          </label>
+          </div>
   
     <div className='flex'>
       <div className='flex w-[300px] h-[1200px] bg-lime-900'>
@@ -77,7 +100,7 @@ function AllStaffGet() {
                 </thead>
                 <tbody>
                   {/* get all data from db */}
-                  {UserProfile.map((profile, index) => (
+                  {filtredAllStaffGet.map((profile, index) => (
                     <tr key={index}>
                       <td className=' px-10'>{profile.name}</td>
                       <td className=' px-10'>{profile.email}</td>

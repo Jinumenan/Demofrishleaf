@@ -61,6 +61,9 @@ function Login() {
         navigate('/shipmentAccount');
       }
       else if (data.role === 'marketingM') {
+        navigate('/inventroyAddtoForms');
+      }
+      else if (data.role === 'marketingM') {
         navigate('/MarketingPage');
       }
       else if (data.role === 'Owner') {
